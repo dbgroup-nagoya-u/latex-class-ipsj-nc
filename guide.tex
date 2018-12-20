@@ -1,18 +1,20 @@
-\documentclass{ipsj}
+\documentclass[lualatex]{ipsj}
+% \documentclass[uplatex,dvipdfmx]{ipsj}
 
-%-------------------------------------------------------------------------------- %
-% Import your prefered packages
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
+% Import your preferred packages
+%------------------------------------------------------------------------------%
 
 % Graphics (figures and colors)
 \usepackage{graphicx,xcolor}
 
+% \usepackage{fontenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
-% Mathmatics markup
+% Mathematics markup
 \usepackage{latexsym,amsmath}
-\usepackage[all, warning]{onlyamsmath}% Warn the use of non-ams­math math­e­mat­ics markup
+\usepackage[all, warning]{onlyamsmath}% Warn the use of non-ams­math math­e­mat­icc
 
 % Writing algorithms
 \usepackage[linesnumbered,plain,vlined,figure]{algorithm2e}
@@ -29,9 +31,9 @@
 % Using smart alphabets
 \usepackage{newtxtext,newtxmath}
 
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 % Define your macros
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 % For definition and theorem environments
 \newtheorem{definition}{定義}
 \newtheorem{theorem}{定理}
@@ -39,7 +41,7 @@
 \renewcommand{\theproof}{}
 \newcommand{\QED}{\hfill $\Box$}
 
-% For referenences
+% For references
 \newcommand{\Sec}[1]{#1~章}
 \newcommand{\Subsec}[1]{#1~節}
 \newcommand{\Fig}[1]{図~#1}
@@ -48,26 +50,41 @@
 \newcommand{\Theo}[1]{定理~#1}
 \newcommand{\Eq}[1]{式~(#1)}
 
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 % Describe paper's title, authors, and authors' affiliations.
-%-------------------------------------------------------------------------------- %
-%\title{<japanese_title>}{<english_title>}
-\title{IPSJ全国大会用クラスファイルの使い方}{How to use the class file for the national convention of IPSJ}
-%\author{<japanese_name>}{<english_name>}{<affiliation_label>[,<additional_affiliation>,...]}
+%------------------------------------------------------------------------------%
+% \title
+%   {<japanese_title>}
+%   {<english_title>}
+\title
+  {IPSJ全国大会用クラスファイルの使い方}
+  {How to use the class file for the national convention of IPSJ}
+% \author
+%   {<japanese_name>}
+%   {<english_name>}
+%   {<affiliation_label>[,<additional_affiliation>,...]}
 \author{山田 太郎}{Tarou Yamada}{IE}
 \author{山田 花子}{Hanako Yamada}{I}
 \author{鈴木 太郎}{Tarou Suzuki}{I,IS}
-%\affiliation{<affiliation_label>}{<japanese_affiliation>}{<english_affiliation>}
-\affiliation{IE}{名古屋大学工学部電気電子・情報工学科}{Department of Information Engineering, School of Engineering, Nagoya University}
-\affiliation{I}{名古屋大学大学院情報学研究科}{Graduate School of Informatics, Nagoya University}
-\affiliation{IS}{名古屋大学大学院情報科学研究科}{Graduate School of Information Science, Nagoya University}
+% \affiliation{<affiliation_label>}
+%   {<japanese_affiliation>}
+%   {<english_affiliation>}
+\affiliation{IE}
+  {名古屋大学工学部電気電子・情報工学科}
+  {Department of Information Engineering, School of Engineering, Nagoya University}
+\affiliation{I}
+  {名古屋大学大学院情報学研究科}
+  {Graduate School of Informatics, Nagoya University}
+\affiliation{IS}
+  {名古屋大学大学院情報科学研究科}
+  {Graduate School of Information Science, Nagoya University}
 
 \begin{document}
 \maketitle
 
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 % Describe your document
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 \section{はじめに}
 本稿では，情報処理学会全国大会に投稿する論文用のクラスファイル``ipsj.cls''の使用法を説明する．
 なお，本稿を作成するためのソースファイルは本クラスファイルのテンプレートも兼ねている．
@@ -121,7 +138,7 @@
   
     \begin{figure}[t]
     \centering
-    \includegraphics[scale=0.80]{./figures/sample_graph.pdf}
+    \includegraphics[scale=0.8]{./figures/sample_graph.pdf}
     \caption{図の例}
     \label{fig:sample}
     %\vspace{-5mm} % 文章とのスペースが気になるときは，適当に狭める
@@ -222,9 +239,9 @@
 そこで，本稿を作成する際に使用したソースファイルでは，著者が普段論文を書く際に使用しているスタイルファイルやマクロをそのまま列挙した．
 本文中での使われ方とあわせて，よければ参照してみてほしい．
 
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 % Import your bibliography
-%-------------------------------------------------------------------------------- %
+%------------------------------------------------------------------------------%
 \small
 \bibliographystyle{ieeetr}
 \bibliography{reference}
