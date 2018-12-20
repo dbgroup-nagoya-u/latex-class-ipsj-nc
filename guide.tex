@@ -57,8 +57,8 @@
 %   {<japanese_title>}
 %   {<english_title>}
 \title
-  {IPSJ全国大会用クラスファイルの使い方}
-  {How to use the class file for the national convention of IPSJ}
+  {全国大会及びFIT用クラスファイルの使い方}
+  {How to use the class file for the national convention of IPSJ and FIT}
 % \author
 %   {<japanese_name>}
 %   {<english_name>}
@@ -86,43 +86,60 @@
 % Describe your document
 %------------------------------------------------------------------------------%
 \section{はじめに}
-本稿では，情報処理学会全国大会に投稿する論文用のクラスファイル``ipsj.cls''の使用法を説明する．
+本稿では，情報処理学会全国大会及びFITに投稿する論文用のクラスファイル``ipsj.cls''の使用法を説明する．
 なお，本稿を作成するためのソースファイルは本クラスファイルのテンプレートも兼ねている．
-詳しくは後述するが，コメントで``Describe ...''と書いてある箇所を変更することで，ソースファイルをそのまま論文作成に使用できる．
+つまり，コメントで``Describe ...''と書いてある箇所を変更することで，ソースファイルをそのまま論文作成に使用できる．
 
 
 \section{使い方}
 基本的な書き方は{\LaTeXe}で文章を書く際と同じであり，タイトル・著者・所属の指定方法のみ拡張している．
+使用エンジンについてはBXjsclsを基に使用しており，upLaTeX及びLuaLaTeXでの動作確認を行った．
+以下，エンジンの指定方法とタイトルなどの入力方法について説明する．
 
-タイトルを指定する際は，以下のように日本語タイトルを第1引数に，英語タイトルを第2引数に指定する．
+  \subsection{エンジンの指定}
+  使用するエンジンはクラスのオプションとして指定する．
+  例えば，LuaLaTeXを使用する場合は下記のようにオプションを指定する．
   \begin{quote}
-  \texttt{\textbackslash title}\{日本語タイトル\}\{english title\}
+    \texttt{\textbackslash documentclass[lualatex]\{ipsj\}}
+  \end{quote}
+  一方，upLaTeXを使用する場合は以下のように指定する．
+  \begin{quote}
+    \texttt{\textbackslash documentclass[uplatex,dvipdfmx]\{ipsj\}}
   \end{quote}
 
-著者を入力する際は，第1引数に日本語名を，第2引数に英語名を，第3引数に後述する所属ラベルを指定し，人数分列挙する．
-  \begin{quote}
-  \texttt{\textbackslash author}\{日本語名\}\{english name\}\{L\}
-  \end{quote}
-所属が複数ある場合は，以下のように半角カンマ（,）区切りでラベルを列挙する．
-  \begin{quote}
-  \texttt{\textbackslash author}\{日本語名\}\{english name\}\{L1,L2\}
-  \end{quote}
+  なお，BXjscls自体は他のエンジンも使用できるが，このipsj.clsでは上記2エンジンのみを対象としている．
+  もし他のエンジンを使用したい場合は，適宜クラスファイルを修正して使ってほしい．
 
-所属を入力する際は，第1引数にラベルを，第2引数に日本語での所属を，第3引数に英語での所属名を指定する．
-  \begin{quote}
-  \texttt{\textbackslash affiliation}\{L\}\{日本語所属\}\{english affl.\}
-  \end{quote}
-なお，``\texttt{\textbackslash author}''で使用したラベルが``\texttt{\textbackslash affiliation}''に存在しない場合，エラーが発生するため注意すること．
+  \subsection{タイトル・著者・所属の入力}
+  タイトルを指定する際は，以下のように日本語タイトルを第1引数に，英語タイトルを第2引数に指定する．
+    \begin{quote}
+    \texttt{\textbackslash title}\{日本語タイトル\}\{english title\}
+    \end{quote}
 
-また，著者と所属の表示順は，入力された順番にそのまま表示される．
-これは参照符についても同様であり，著者入力時のラベルで指定した順番に付与される．
-したがって，所属の出力順と参照符の付与順に関しては手動であわせる必要がある（自動化できるとは思いますが，面倒なのでたぶんやりません）．
+  著者を入力する際は，第1引数に日本語名を，第2引数に英語名を，第3引数に後述する所属ラベルを指定し，人数分列挙する．
+    \begin{quote}
+    \texttt{\textbackslash author}\{日本語名\}\{english name\}\{L\}
+    \end{quote}
+  所属が複数ある場合は，以下のように半角カンマ（,）区切りでラベルを列挙する．
+    \begin{quote}
+    \texttt{\textbackslash author}\{日本語名\}\{english name\}\{L1,L2\}
+    \end{quote}
+
+  所属を入力する際は，第1引数にラベルを，第2引数に日本語での所属を，第3引数に英語での所属名を指定する．
+    \begin{quote}
+    \texttt{\textbackslash affiliation}\{L\}\{日本語所属\}\{english affl.\}
+    \end{quote}
+  なお，``\texttt{\textbackslash author}''で使用したラベルが``\texttt{\textbackslash affiliation}''に存在しない場合，エラーが発生するため注意すること．
+
+  また，著者と所属の表示順は，入力された順番にそのまま表示される．
+  これは参照符についても同様であり，著者入力時のラベルで指定した順番に付与される．
+  したがって，所属の出力順と参照符の付与順に関しては手動であわせる必要がある（自動化できるとは思いますが，面倒なのでたぶんやりません）．
 
 
 \section{出力例}
 本章では，章節項や図表，アルゴリズムの出力例を示す．
-なお，本クラスファイルは``jsarticle.cls''の拡張であり，各レイアウトは変更していないため，``jsarticle.cls''を用いた際と同様の出力結果が得られる（はずである）．
-したがって，章節項のレイアウトを変更したい場合は，``jsarticle.cls''での変更例を参考にすればよい．
+なお，本クラスファイルは``bxjsarticle.cls''の拡張であり，各レイアウトは変更していないため，``bxjsarticle.cls''を用いた際と同様の出力結果が得られる（はずである）．
+したがって，章節項のレイアウトを変更したい場合は，``bxjsarticle.cls''での変更例を参考にすればよい．
 
   \subsection{節}
   節の出力例．
@@ -149,15 +166,11 @@
     \paragraph{PDFファイルを使う：}
     以前は論文をDVIファイルで提出するのが主流だったため図もEPSファイルで作成していたが，現代ではほぼ間違いなくPDFファイルの提出を求められる．
     したがって，PowerPointなどで作成した図を直接PDFファイルとして保存し，挿入すればよい．
+    
     ただし，PDFファイルを挿入する際は，画像のバウンディングボックスについての情報を持つXBBファイルを用意する必要がある．
     無い場合はコンパイル時に自動で用意されるが，数が多くなると時間がかかるため，あらかじめ``\texttt{extractbb}''コマンドで作成した方がよい．
-    また，PowerPointでPDFファイルを作成した場合，ファイルの容量が無駄に大きくなる．
-    そのため，GhostScriptを用いて容量を削減することを勧める．
-    なお，上記2点に関しては処理を簡便にするためにBashスクリプトを作成したので，活用してほしい．
-    Bashが動く環境（MINGWなど）があれば，以下のコマンドで指定したディレクトリ内にある全PDFファイルの容量削減とXBBファイルの作成が実行できる．
-      \begin{quote}
-      \texttt{./prepare-pdf.sh} <figures\_dir>
-      \end{quote}
+
+    また，PowerPointでPDFファイルを作成した場合，ファイルの容量が無駄に大きくなるため，GhostScriptを用いて容量を削減することを勧める．
     
     \paragraph{グレースケールで作る：}
     PDFファイルでの提出が主流となったため，基本的に図で色を用いても問題はない．
