@@ -242,3 +242,33 @@
 \end{center}%
 \par\vskip 2em
 }
+
+%----------------------------------------------------------------------------- %
+% Override "thebibliography" environment
+%----------------------------------------------------------------------------- %
+\renewenvironment{thebibliography}[1]{%
+  \@jsc@warnoldfontcmdexceptiontrue
+  \global\let\presectionname\relax
+  \global\let\postsectionname\relax
+  \section*{\refname}\@mkboth{\refname}{\refname}%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}%
+      \leftmargin\labelwidth
+      \advance\leftmargin\labelsep
+      %-------- modified ---------%
+      \small
+      \setlength\baselineskip{10pt}
+      %---------------------------% 
+      \@openbib@code
+      \usecounter{enumiv}%
+      \let\p@enumiv\@empty
+      \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m
+}
+{\def\@noitemerr
+{\@latex@warning{Empty `thebibliography' environment}}%
+\endlist}
