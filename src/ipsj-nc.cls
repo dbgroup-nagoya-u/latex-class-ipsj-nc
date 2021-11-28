@@ -1,9 +1,8 @@
-% This is file "ipsj.cls",
-% LaTeX Class File for some conferences of IPSJ (e.g., the national convention
-% and the forum on information technology).
+% This is file "ipsj-nc.cls",
+% LaTeX Class File for the national convention of IPSJ.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{ipsj}[2021/11/28 v3.0.0 for National Convention of IPSJ]
+\ProvidesPackage{ipsj-nc}[2021/11/28 v3.0.0 for National Convention of IPSJ]
 
 % Forward class options to Bxjscls
 \DeclareOption*{
