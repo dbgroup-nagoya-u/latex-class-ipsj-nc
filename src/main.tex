@@ -8,17 +8,19 @@
 \usepackage{my_packages}
 \usepackage{my_command_definitions}
 
-\title{タイトル}{Title in English}
+\title[タイトル]{Title in English}
 
-\author{山田 太郎}{Tarou Yamada}{SI}
-\author{山田 花子}{Hanako Yamada}{SI,GSI}
+\author[著者1]{First Author}{Label1}
+\author[著者2]{Second Author}{Label1,Label2}
 
-\affiliation{SI}
-  {名古屋大学情報学部コンピュータ科学科}
-  {Department of Computer Science, School of Informatics, Nagoya University}
-\affiliation{GSI}
-  {名古屋大学大学院情報学研究科}
-  {Graduate School of Informatics, Nagoya University}
+\affiliation
+  [所属1]
+  {First Affiliation}
+  {Label1}
+\affiliation
+  [所属2]
+  {Second Affiliation}
+  {Label2}
 
 \begin{document}
 

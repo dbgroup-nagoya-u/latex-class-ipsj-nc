@@ -39,14 +39,14 @@
 %------------------------------------------------------------------------------%
 % Macros to input a title, authors, and affiliations
 %------------------------------------------------------------------------------%
-\renewcommand{\title}[2]{
+\renewcommand{\title}[2][]{
   \def\@jpTitle{#1}
   \def\@enTitle{#2}
 }
 
 \newcount\@authorCnt
 \@authorCnt=0
-\renewcommand{\author}[3]{
+\renewcommand{\author}[3][]{
   \expandafter\def\csname @jpAuthor\number\@authorCnt\endcsname{#1}
   \expandafter\def\csname @enAuthor\number\@authorCnt\endcsname{#2}
   \expandafter\def\csname @authorLabel\number\@authorCnt\endcsname{#3}
@@ -55,12 +55,12 @@
 
 \newcount\@afflCnt
 \@afflCnt=0
-\newcommand{\affiliation}[3]{
+\newcommand{\affiliation}[3][]{
   \@tempcnta=\@afflCnt
   \advance\@tempcnta by1
-  \expandafter\edef\csname @#1\endcsname{\the\@tempcnta}
-  \@namedef{@jpAffiliation\number\@afflCnt}{#2}
-  \@namedef{@enAffiliation\number\@afflCnt}{#3}
+  \expandafter\edef\csname @#3\endcsname{\the\@tempcnta}
+  \@namedef{@jpAffiliation\number\@afflCnt}{#1}
+  \@namedef{@enAffiliation\number\@afflCnt}{#2}
   \advance\@afflCnt by1
 }
 
@@ -208,10 +208,12 @@
     \llap{\@textsuperscript{\normalfont\@thefnmark}\hskip0.3\jsZw}##1}%
   \twocolumn[\@maketitle]
   \long\def\@makefntext##1{\parindent 0pt\noindent##1}%
-  \footnotetext{%
-    \@enTitle\\
-    \@enAuthorList\\
-    \@enAfflList}%
+  \if@english\else
+    \footnotetext{%
+      \@enTitle\\
+      \@enAuthorList\\
+      \@enAfflList}%
+  \fi
   \plainifnotempty
   \@thanks
 \endgroup
@@ -234,16 +236,16 @@
 \newpage\null
 \begin{center}%
   \let\footnote\thanks
-  {\LARGE\sffamily \@jpTitle \par}%
+  {\LARGE\sffamily \if@english \@enTitle \else \@jpTitle \fi\par}%
   \vskip 1em
   {\large\sffamily
   \lineskip .5em
   \tabcolsep 0pt
   \begin{tabular}[t]{p{169truemm}}%
     \centering
-    \@jpAuthorList\\
+    \if@english \@enAuthorList \else \@jpAuthorList \fi\\
     \vskip .5em
-    \@jpAfflList
+    \if@english \@enAfflList \else \@jpAfflList\fi
   \end{tabular}\par}%
 \end{center}%
 \par\vskip 2em
